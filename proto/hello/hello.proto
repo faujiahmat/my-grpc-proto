@@ -6,6 +6,7 @@ option go_package = "github.com/faujiahmat/my-grpc-proto/protogen/go/hello";
 
 message HelloReq{
   string name = 1;
+  uint32 age = 16;
 }
 
 message HelloRes{
