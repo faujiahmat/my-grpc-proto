@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package payment;
+
+import "proto/transaction/cart.proto";
+
+option go_package = "github.com/faujiahmat/my-grpc-proto/protogen/go/payment";
+
+message PaymentReq {
+  transaction.Cart cart = 1;
+  string currency = 2;
+  uint32 total_amount = 3 [json_name = "total_amount"];
+  uint32 tax = 4;
+  string promo_code = 5 [json_name = "promo_code"];
+}

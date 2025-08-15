@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package hello;
+
+option go_package = "github.com/faujiahmat/my-grpc-proto/protogen/go/hello";
+
+message HelloReq{
+  string name = 1;
+}
+
+message HelloRes{
+  string greet = 1;
+}
+
+service HelloService{
+  rpc Hello(HelloReq) returns (HelloRes);
+}
