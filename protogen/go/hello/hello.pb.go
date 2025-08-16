@@ -126,9 +126,9 @@ const file_proto_hello_hello_proto_rawDesc = "" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x10\n" +
 	"\x03age\x18\x10 \x01(\rR\x03age\" \n" +
 	"\bHelloRes\x12\x14\n" +
-	"\x05greet\x18\x01 \x01(\tR\x05greet29\n" +
-	"\fHelloService\x12)\n" +
-	"\x05Hello\x12\x0f.hello.HelloReq\x1a\x0f.hello.HelloResB7Z5github.com/faujiahmat/my-grpc-proto/protogen/go/hellob\x06proto3"
+	"\x05greet\x18\x01 \x01(\tR\x05greet2>\n" +
+	"\fHelloService\x12.\n" +
+	"\bSayHello\x12\x0f.hello.HelloReq\x1a\x0f.hello.HelloRes\"\x00B7Z5github.com/faujiahmat/my-grpc-proto/protogen/go/hellob\x06proto3"
 
 var (
 	file_proto_hello_hello_proto_rawDescOnce sync.Once
@@ -148,8 +148,8 @@ var file_proto_hello_hello_proto_goTypes = []any{
 	(*HelloRes)(nil), // 1: hello.HelloRes
 }
 var file_proto_hello_hello_proto_depIdxs = []int32{
-	0, // 0: hello.HelloService.Hello:input_type -> hello.HelloReq
-	1, // 1: hello.HelloService.Hello:output_type -> hello.HelloRes
+	0, // 0: hello.HelloService.SayHello:input_type -> hello.HelloReq
+	1, // 1: hello.HelloService.SayHello:output_type -> hello.HelloRes
 	1, // [1:2] is the sub-list for method output_type
 	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
