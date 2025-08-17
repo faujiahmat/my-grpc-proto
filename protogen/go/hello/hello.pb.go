@@ -126,11 +126,12 @@ const file_proto_hello_hello_proto_rawDesc = "" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x10\n" +
 	"\x03age\x18\x10 \x01(\rR\x03age\" \n" +
 	"\bHelloRes\x12\x14\n" +
-	"\x05greet\x18\x01 \x01(\tR\x05greet2\xb1\x01\n" +
+	"\x05greet\x18\x01 \x01(\tR\x05greet2\xef\x01\n" +
 	"\fHelloService\x12.\n" +
 	"\bSayHello\x12\x0f.hello.HelloReq\x1a\x0f.hello.HelloRes\"\x00\x125\n" +
 	"\rSayManyHellos\x12\x0f.hello.HelloReq\x1a\x0f.hello.HelloRes\"\x000\x01\x12:\n" +
-	"\x12SayHelloToEveryone\x12\x0f.hello.HelloReq\x1a\x0f.hello.HelloRes\"\x00(\x01B7Z5github.com/faujiahmat/my-grpc-proto/protogen/go/hellob\x06proto3"
+	"\x12SayHelloToEveryone\x12\x0f.hello.HelloReq\x1a\x0f.hello.HelloRes\"\x00(\x01\x12<\n" +
+	"\x12SayHelloContinuous\x12\x0f.hello.HelloReq\x1a\x0f.hello.HelloRes\"\x00(\x010\x01B7Z5github.com/faujiahmat/my-grpc-proto/protogen/go/hellob\x06proto3"
 
 var (
 	file_proto_hello_hello_proto_rawDescOnce sync.Once
@@ -153,11 +154,13 @@ var file_proto_hello_hello_proto_depIdxs = []int32{
 	0, // 0: hello.HelloService.SayHello:input_type -> hello.HelloReq
 	0, // 1: hello.HelloService.SayManyHellos:input_type -> hello.HelloReq
 	0, // 2: hello.HelloService.SayHelloToEveryone:input_type -> hello.HelloReq
-	1, // 3: hello.HelloService.SayHello:output_type -> hello.HelloRes
-	1, // 4: hello.HelloService.SayManyHellos:output_type -> hello.HelloRes
-	1, // 5: hello.HelloService.SayHelloToEveryone:output_type -> hello.HelloRes
-	3, // [3:6] is the sub-list for method output_type
-	0, // [0:3] is the sub-list for method input_type
+	0, // 3: hello.HelloService.SayHelloContinuous:input_type -> hello.HelloReq
+	1, // 4: hello.HelloService.SayHello:output_type -> hello.HelloRes
+	1, // 5: hello.HelloService.SayManyHellos:output_type -> hello.HelloRes
+	1, // 6: hello.HelloService.SayHelloToEveryone:output_type -> hello.HelloRes
+	1, // 7: hello.HelloService.SayHelloContinuous:output_type -> hello.HelloRes
+	4, // [4:8] is the sub-list for method output_type
+	0, // [0:4] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
