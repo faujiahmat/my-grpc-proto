@@ -17,4 +17,5 @@ service HelloService{
   rpc SayHello(HelloReq) returns (HelloRes){};
   rpc SayManyHellos(HelloReq) returns (stream HelloRes){};
   rpc SayHelloToEveryone(stream HelloReq) returns (HelloRes){};
+  rpc SayHelloContinuous(stream HelloReq) returns (stream HelloRes){};
 }
