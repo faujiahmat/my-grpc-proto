@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package bank;
+
+option go_package = "github.com/faujiahmat/my-grpc-proto/protogen/go/bank";
+
+message ExchangeRateReq {
+  string from_currency = 1 [json_name = "from_currency"];
+  string to_currency = 2 [json_name = "to_currency"];
+}
+
+message ExchangeRateRes {
+  string from_currency = 1 [json_name = "from_currency"];
+  string to_currency = 2 [json_name = "to_currency"];
+  double rate = 3;
+  string timestamp = 4;
+}
