@@ -24,19 +24,24 @@ var File_proto_bank_service_proto protoreflect.FileDescriptor
 
 const file_proto_bank_service_proto_rawDesc = "" +
 	"\n" +
-	"\x18proto/bank/service.proto\x12\x04bank\x1a\x1dproto/bank/type/account.proto2V\n" +
+	"\x18proto/bank/service.proto\x12\x04bank\x1a\x1dproto/bank/type/account.proto\x1a\x1eproto/bank/type/exchange.proto2\x9e\x01\n" +
 	"\vBankService\x12G\n" +
-	"\x11GetCurrentBalance\x12\x17.bank.CurrentBalanceReq\x1a\x17.bank.CurrentBalanceRes\"\x00B6Z4github.com/faujiahmat/my-grpc-proto/protogen/go/bankb\x06proto3"
+	"\x11GetCurrentBalance\x12\x17.bank.CurrentBalanceReq\x1a\x17.bank.CurrentBalanceRes\"\x00\x12F\n" +
+	"\x12FetchExchangeRates\x12\x15.bank.ExchangeRateReq\x1a\x15.bank.ExchangeRateRes\"\x000\x01B6Z4github.com/faujiahmat/my-grpc-proto/protogen/go/bankb\x06proto3"
 
 var file_proto_bank_service_proto_goTypes = []any{
 	(*CurrentBalanceReq)(nil), // 0: bank.CurrentBalanceReq
-	(*CurrentBalanceRes)(nil), // 1: bank.CurrentBalanceRes
+	(*ExchangeRateReq)(nil),   // 1: bank.ExchangeRateReq
+	(*CurrentBalanceRes)(nil), // 2: bank.CurrentBalanceRes
+	(*ExchangeRateRes)(nil),   // 3: bank.ExchangeRateRes
 }
 var file_proto_bank_service_proto_depIdxs = []int32{
 	0, // 0: bank.BankService.GetCurrentBalance:input_type -> bank.CurrentBalanceReq
-	1, // 1: bank.BankService.GetCurrentBalance:output_type -> bank.CurrentBalanceRes
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
+	1, // 1: bank.BankService.FetchExchangeRates:input_type -> bank.ExchangeRateReq
+	2, // 2: bank.BankService.GetCurrentBalance:output_type -> bank.CurrentBalanceRes
+	3, // 3: bank.BankService.FetchExchangeRates:output_type -> bank.ExchangeRateRes
+	2, // [2:4] is the sub-list for method output_type
+	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -48,6 +53,7 @@ func file_proto_bank_service_proto_init() {
 		return
 	}
 	file_proto_bank_type_account_proto_init()
+	file_proto_bank_type_exchange_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
