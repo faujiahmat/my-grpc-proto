@@ -224,3 +224,211 @@ var ResiliencyService_ServiceDesc = grpc.ServiceDesc{
 	},
 	Metadata: "proto/resiliency/resiliency.proto",
 }
+
+const (
+	ResiliencyWithMetadataService_UnaryResiliencyWithMetadata_FullMethodName               = "/resiliency.ResiliencyWithMetadataService/UnaryResiliencyWithMetadata"
+	ResiliencyWithMetadataService_ServerStreamResiliencyWithMetadata_FullMethodName        = "/resiliency.ResiliencyWithMetadataService/ServerStreamResiliencyWithMetadata"
+	ResiliencyWithMetadataService_ClientStreamResiliencyWithMetadata_FullMethodName        = "/resiliency.ResiliencyWithMetadataService/ClientStreamResiliencyWithMetadata"
+	ResiliencyWithMetadataService_BiDirectionalStreamResiliencyWithMetadata_FullMethodName = "/resiliency.ResiliencyWithMetadataService/BiDirectionalStreamResiliencyWithMetadata"
+)
+
+// ResiliencyWithMetadataServiceClient is the client API for ResiliencyWithMetadataService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type ResiliencyWithMetadataServiceClient interface {
+	UnaryResiliencyWithMetadata(ctx context.Context, in *ResiliencyReq, opts ...grpc.CallOption) (*ResiliencyRes, error)
+	ServerStreamResiliencyWithMetadata(ctx context.Context, in *ResiliencyReq, opts ...grpc.CallOption) (grpc.ServerStreamingClient[ResiliencyRes], error)
+	ClientStreamResiliencyWithMetadata(ctx context.Context, opts ...grpc.CallOption) (grpc.ClientStreamingClient[ResiliencyReq, ResiliencyRes], error)
+	BiDirectionalStreamResiliencyWithMetadata(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[ResiliencyReq, ResiliencyRes], error)
+}
+
+type resiliencyWithMetadataServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewResiliencyWithMetadataServiceClient(cc grpc.ClientConnInterface) ResiliencyWithMetadataServiceClient {
+	return &resiliencyWithMetadataServiceClient{cc}
+}
+
+func (c *resiliencyWithMetadataServiceClient) UnaryResiliencyWithMetadata(ctx context.Context, in *ResiliencyReq, opts ...grpc.CallOption) (*ResiliencyRes, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResiliencyRes)
+	err := c.cc.Invoke(ctx, ResiliencyWithMetadataService_UnaryResiliencyWithMetadata_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *resiliencyWithMetadataServiceClient) ServerStreamResiliencyWithMetadata(ctx context.Context, in *ResiliencyReq, opts ...grpc.CallOption) (grpc.ServerStreamingClient[ResiliencyRes], error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	stream, err := c.cc.NewStream(ctx, &ResiliencyWithMetadataService_ServiceDesc.Streams[0], ResiliencyWithMetadataService_ServerStreamResiliencyWithMetadata_FullMethodName, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &grpc.GenericClientStream[ResiliencyReq, ResiliencyRes]{ClientStream: stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type ResiliencyWithMetadataService_ServerStreamResiliencyWithMetadataClient = grpc.ServerStreamingClient[ResiliencyRes]
+
+func (c *resiliencyWithMetadataServiceClient) ClientStreamResiliencyWithMetadata(ctx context.Context, opts ...grpc.CallOption) (grpc.ClientStreamingClient[ResiliencyReq, ResiliencyRes], error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	stream, err := c.cc.NewStream(ctx, &ResiliencyWithMetadataService_ServiceDesc.Streams[1], ResiliencyWithMetadataService_ClientStreamResiliencyWithMetadata_FullMethodName, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &grpc.GenericClientStream[ResiliencyReq, ResiliencyRes]{ClientStream: stream}
+	return x, nil
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type ResiliencyWithMetadataService_ClientStreamResiliencyWithMetadataClient = grpc.ClientStreamingClient[ResiliencyReq, ResiliencyRes]
+
+func (c *resiliencyWithMetadataServiceClient) BiDirectionalStreamResiliencyWithMetadata(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[ResiliencyReq, ResiliencyRes], error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	stream, err := c.cc.NewStream(ctx, &ResiliencyWithMetadataService_ServiceDesc.Streams[2], ResiliencyWithMetadataService_BiDirectionalStreamResiliencyWithMetadata_FullMethodName, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &grpc.GenericClientStream[ResiliencyReq, ResiliencyRes]{ClientStream: stream}
+	return x, nil
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type ResiliencyWithMetadataService_BiDirectionalStreamResiliencyWithMetadataClient = grpc.BidiStreamingClient[ResiliencyReq, ResiliencyRes]
+
+// ResiliencyWithMetadataServiceServer is the server API for ResiliencyWithMetadataService service.
+// All implementations must embed UnimplementedResiliencyWithMetadataServiceServer
+// for forward compatibility.
+type ResiliencyWithMetadataServiceServer interface {
+	UnaryResiliencyWithMetadata(context.Context, *ResiliencyReq) (*ResiliencyRes, error)
+	ServerStreamResiliencyWithMetadata(*ResiliencyReq, grpc.ServerStreamingServer[ResiliencyRes]) error
+	ClientStreamResiliencyWithMetadata(grpc.ClientStreamingServer[ResiliencyReq, ResiliencyRes]) error
+	BiDirectionalStreamResiliencyWithMetadata(grpc.BidiStreamingServer[ResiliencyReq, ResiliencyRes]) error
+	mustEmbedUnimplementedResiliencyWithMetadataServiceServer()
+}
+
+// UnimplementedResiliencyWithMetadataServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedResiliencyWithMetadataServiceServer struct{}
+
+func (UnimplementedResiliencyWithMetadataServiceServer) UnaryResiliencyWithMetadata(context.Context, *ResiliencyReq) (*ResiliencyRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UnaryResiliencyWithMetadata not implemented")
+}
+func (UnimplementedResiliencyWithMetadataServiceServer) ServerStreamResiliencyWithMetadata(*ResiliencyReq, grpc.ServerStreamingServer[ResiliencyRes]) error {
+	return status.Errorf(codes.Unimplemented, "method ServerStreamResiliencyWithMetadata not implemented")
+}
+func (UnimplementedResiliencyWithMetadataServiceServer) ClientStreamResiliencyWithMetadata(grpc.ClientStreamingServer[ResiliencyReq, ResiliencyRes]) error {
+	return status.Errorf(codes.Unimplemented, "method ClientStreamResiliencyWithMetadata not implemented")
+}
+func (UnimplementedResiliencyWithMetadataServiceServer) BiDirectionalStreamResiliencyWithMetadata(grpc.BidiStreamingServer[ResiliencyReq, ResiliencyRes]) error {
+	return status.Errorf(codes.Unimplemented, "method BiDirectionalStreamResiliencyWithMetadata not implemented")
+}
+func (UnimplementedResiliencyWithMetadataServiceServer) mustEmbedUnimplementedResiliencyWithMetadataServiceServer() {
+}
+func (UnimplementedResiliencyWithMetadataServiceServer) testEmbeddedByValue() {}
+
+// UnsafeResiliencyWithMetadataServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to ResiliencyWithMetadataServiceServer will
+// result in compilation errors.
+type UnsafeResiliencyWithMetadataServiceServer interface {
+	mustEmbedUnimplementedResiliencyWithMetadataServiceServer()
+}
+
+func RegisterResiliencyWithMetadataServiceServer(s grpc.ServiceRegistrar, srv ResiliencyWithMetadataServiceServer) {
+	// If the following call pancis, it indicates UnimplementedResiliencyWithMetadataServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&ResiliencyWithMetadataService_ServiceDesc, srv)
+}
+
+func _ResiliencyWithMetadataService_UnaryResiliencyWithMetadata_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResiliencyReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ResiliencyWithMetadataServiceServer).UnaryResiliencyWithMetadata(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ResiliencyWithMetadataService_UnaryResiliencyWithMetadata_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ResiliencyWithMetadataServiceServer).UnaryResiliencyWithMetadata(ctx, req.(*ResiliencyReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ResiliencyWithMetadataService_ServerStreamResiliencyWithMetadata_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(ResiliencyReq)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(ResiliencyWithMetadataServiceServer).ServerStreamResiliencyWithMetadata(m, &grpc.GenericServerStream[ResiliencyReq, ResiliencyRes]{ServerStream: stream})
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type ResiliencyWithMetadataService_ServerStreamResiliencyWithMetadataServer = grpc.ServerStreamingServer[ResiliencyRes]
+
+func _ResiliencyWithMetadataService_ClientStreamResiliencyWithMetadata_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(ResiliencyWithMetadataServiceServer).ClientStreamResiliencyWithMetadata(&grpc.GenericServerStream[ResiliencyReq, ResiliencyRes]{ServerStream: stream})
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type ResiliencyWithMetadataService_ClientStreamResiliencyWithMetadataServer = grpc.ClientStreamingServer[ResiliencyReq, ResiliencyRes]
+
+func _ResiliencyWithMetadataService_BiDirectionalStreamResiliencyWithMetadata_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(ResiliencyWithMetadataServiceServer).BiDirectionalStreamResiliencyWithMetadata(&grpc.GenericServerStream[ResiliencyReq, ResiliencyRes]{ServerStream: stream})
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type ResiliencyWithMetadataService_BiDirectionalStreamResiliencyWithMetadataServer = grpc.BidiStreamingServer[ResiliencyReq, ResiliencyRes]
+
+// ResiliencyWithMetadataService_ServiceDesc is the grpc.ServiceDesc for ResiliencyWithMetadataService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var ResiliencyWithMetadataService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "resiliency.ResiliencyWithMetadataService",
+	HandlerType: (*ResiliencyWithMetadataServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "UnaryResiliencyWithMetadata",
+			Handler:    _ResiliencyWithMetadataService_UnaryResiliencyWithMetadata_Handler,
+		},
+	},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "ServerStreamResiliencyWithMetadata",
+			Handler:       _ResiliencyWithMetadataService_ServerStreamResiliencyWithMetadata_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "ClientStreamResiliencyWithMetadata",
+			Handler:       _ResiliencyWithMetadataService_ClientStreamResiliencyWithMetadata_Handler,
+			ClientStreams: true,
+		},
+		{
+			StreamName:    "BiDirectionalStreamResiliencyWithMetadata",
+			Handler:       _ResiliencyWithMetadataService_BiDirectionalStreamResiliencyWithMetadata_Handler,
+			ServerStreams: true,
+			ClientStreams: true,
+		},
+	},
+	Metadata: "proto/resiliency/resiliency.proto",
+}
