@@ -7,6 +7,8 @@
 package resiliency
 
 import (
+	_ "github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2/options"
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -130,23 +132,36 @@ var File_proto_resiliency_resiliency_proto protoreflect.FileDescriptor
 const file_proto_resiliency_resiliency_proto_rawDesc = "" +
 	"\n" +
 	"!proto/resiliency/resiliency.proto\x12\n" +
-	"resiliency\"\x8a\x01\n" +
-	"\rResiliencyReq\x12*\n" +
-	"\x10min_delay_second\x18\x01 \x01(\x05R\x10min_delay_second\x12*\n" +
-	"\x10max_delay_second\x18\x02 \x01(\x05R\x10max_delay_second\x12!\n" +
-	"\fstatus_codes\x18\x03 \x03(\rR\vstatus_code\"3\n" +
-	"\rResiliencyRes\x12\"\n" +
-	"\fdummy_string\x18\x01 \x01(\tR\fdummy_string2\xe3\x02\n" +
-	"\x11ResiliencyService\x12I\n" +
-	"\x0fUnaryResiliency\x12\x19.resiliency.ResiliencyReq\x1a\x19.resiliency.ResiliencyRes\"\x00\x12R\n" +
-	"\x16ServerStreamResiliency\x12\x19.resiliency.ResiliencyReq\x1a\x19.resiliency.ResiliencyRes\"\x000\x01\x12R\n" +
-	"\x16ClientStreamResiliency\x12\x19.resiliency.ResiliencyReq\x1a\x19.resiliency.ResiliencyRes\"\x00(\x01\x12[\n" +
-	"\x1dBiDirectionalStreamResiliency\x12\x19.resiliency.ResiliencyReq\x1a\x19.resiliency.ResiliencyRes\"\x00(\x010\x012\x9f\x03\n" +
-	"\x1dResiliencyWithMetadataService\x12U\n" +
-	"\x1bUnaryResiliencyWithMetadata\x12\x19.resiliency.ResiliencyReq\x1a\x19.resiliency.ResiliencyRes\"\x00\x12^\n" +
-	"\"ServerStreamResiliencyWithMetadata\x12\x19.resiliency.ResiliencyReq\x1a\x19.resiliency.ResiliencyRes\"\x000\x01\x12^\n" +
-	"\"ClientStreamResiliencyWithMetadata\x12\x19.resiliency.ResiliencyReq\x1a\x19.resiliency.ResiliencyRes\"\x00(\x01\x12g\n" +
-	")BiDirectionalStreamResiliencyWithMetadata\x12\x19.resiliency.ResiliencyReq\x1a\x19.resiliency.ResiliencyRes\"\x00(\x010\x01B<Z:github.com/faujiahmat/my-grpc-proto/protogen/go/resiliencyb\x06proto3"
+	"resiliency\x1a\"proto/google/api/annotations.proto\x1a4proto/protoc-gen-openapiv2/options/annotations.proto\"\xb3\x02\n" +
+	"\rResiliencyReq\x12a\n" +
+	"\x10min_delay_second\x18\x01 \x01(\x05B5\x92A22#Minimum delay in second (inclusive)J\x012\xa2\x02\aintegerR\x10min_delay_second\x12a\n" +
+	"\x10max_delay_second\x18\x02 \x01(\x05B5\x92A22#Maximum delay in second (inclusive)J\x017\xa2\x02\aintegerR\x10max_delay_second\x12\\\n" +
+	"\fstatus_codes\x18\x03 \x03(\rB9\x92A624Array of gRPC status codes to be generated (numeric)R\vstatus_code\"S\n" +
+	"\rResiliencyRes\x12B\n" +
+	"\fdummy_string\x18\x01 \x01(\tB\x1e\x92A\x1b2\x19Dummy string for responseR\fdummy_string2\xb3\x04\n" +
+	"\x11ResiliencyService\x12i\n" +
+	"\x0fUnaryResiliency\x12\x19.resiliency.ResiliencyReq\x1a\x19.resiliency.ResiliencyRes\" \x82\xd3\xe4\x93\x02\x1a\x12\x18/api/resiliency/v1/unary\x12\xa3\x01\n" +
+	"\x16ServerStreamResiliency\x12\x19.resiliency.ResiliencyReq\x1a\x19.resiliency.ResiliencyRes\"Q\x82\xd3\xe4\x93\x02K\x12I/api/resiliency/v1/server_streaming/{min_delay_second}/{max_delay_second}0\x01\x12}\n" +
+	"\x16ClientStreamResiliency\x12\x19.resiliency.ResiliencyReq\x1a\x19.resiliency.ResiliencyRes\"+\x82\xd3\xe4\x93\x02%\x12#/api/resiliency/v1/client_streaming(\x01\x12\x8d\x01\n" +
+	"\x1dBiDirectionalStreamResiliency\x12\x19.resiliency.ResiliencyReq\x1a\x19.resiliency.ResiliencyRes\"2\x82\xd3\xe4\x93\x02,\x12*/api/resiliency/v1/bidirectional_streaming(\x010\x012\xc6\t\n" +
+	"\x1dResiliencyWithMetadataService\x12\x81\x01\n" +
+	"\x1bUnaryResiliencyWithMetadata\x12\x19.resiliency.ResiliencyReq\x1a\x19.resiliency.ResiliencyRes\",\x82\xd3\xe4\x93\x02&:\x01*\"!/api/resiliency/v1/metadata/unary\x12\xd4\x02\n" +
+	"\"ServerStreamResiliencyWithMetadata\x12\x19.resiliency.ResiliencyReq\x1a\x19.resiliency.ResiliencyRes\"\xf5\x01\x92A\xba\x01\x121Summary for ServerStreamingResiliencyWithMetadata\x1a5Description for ServerStreamingResiliencyWithMetadataJ&\n" +
+	"\x03200\x12\x1f\n" +
+	"\x1dSample response, 200 when ...J&\n" +
+	"\x03400\x12\x1f\n" +
+	"\x1dSample response, 400 when ...\x82\xd3\xe4\x93\x021:\x01*\",/api/resiliency/v1/metadata/server_streaming0\x01\x12\xd4\x02\n" +
+	"\"ClientStreamResiliencyWithMetadata\x12\x19.resiliency.ResiliencyReq\x1a\x19.resiliency.ResiliencyRes\"\xf5\x01\x92A\xba\x01\x121Summary for ClientStreamingResiliencyWithMetadata\x1a5Description for ClientStreamingResiliencyWithMetadataJ&\n" +
+	"\x03200\x12\x1f\n" +
+	"\x1dSample response, 200 when ...J&\n" +
+	"\x03400\x12\x1f\n" +
+	"\x1dSample response, 400 when ...\x82\xd3\xe4\x93\x021:\x01*\",/api/resiliency/v1/metadata/client_streaming(\x01\x12\xf2\x02\n" +
+	")BiDirectionalStreamResiliencyWithMetadata\x12\x19.resiliency.ResiliencyReq\x1a\x19.resiliency.ResiliencyRes\"\x8a\x02\x92A\xc8\x01\x128Summary for BiDirectionalStreamingResiliencyWithMetadata\x1a<Description for BiDirectionalStreamingResiliencyWithMetadataJ&\n" +
+	"\x03200\x12\x1f\n" +
+	"\x1dSample response, 200 when ...J&\n" +
+	"\x03400\x12\x1f\n" +
+	"\x1dSample response, 400 when ...\x82\xd3\xe4\x93\x028:\x01*\"3/api/resiliency/v1/metadata/bidirectional_streaming(\x010\x01B\x87\x01\x92AH\x12!\n" +
+	"\x18Course - Protobuf & gRPC2\x051.0.0\x1a\x0elocalhost:8081*\x01\x01:\x10application/jsonZ:github.com/faujiahmat/my-grpc-proto/protogen/go/resiliencyb\x06proto3"
 
 var (
 	file_proto_resiliency_resiliency_proto_rawDescOnce sync.Once
